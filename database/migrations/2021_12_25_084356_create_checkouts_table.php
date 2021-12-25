@@ -23,7 +23,7 @@ class CreateCheckoutsTable extends Migration
             $table->boolean('is_paid')->default(false);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
