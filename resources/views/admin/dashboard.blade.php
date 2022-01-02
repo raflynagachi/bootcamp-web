@@ -38,7 +38,7 @@
                                     <td>
                                         <form action="" method="post">
                                             @csrf
-                                            <button class="btn btn-sm">Set to Paid</button>
+                                            <button class="btn btn-primary btn-sm">Set to Paid</button>
                                         </form>
                                     </td>
                                 </tr>
