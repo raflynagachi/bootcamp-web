@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
+use App\Models\Checkout;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,10 @@ Route::get('/', function () {
 //socialite route
 Route::get('sign-in-google', [UserController::class, 'google'])->name('user.login.google');
 Route::get('auth/google/callback', [UserController::class, 'handleProviderCallback'])->name('user.google.callback');
+
+//midtrans route
+Route::get('payment/success', [CheckoutController::class, 'midtransCallback']);
+Route::post('payment/success', [CheckoutController::class, 'midtransCallback']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('checkout/success', [CheckoutController::class, 'success'])->name('checkout.success')->middleware('ensureUserRole:user');
