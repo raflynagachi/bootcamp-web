@@ -29,7 +29,7 @@ class Store extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,'.Auth::id().',id',
             'occupation' => 'required|string',
-            'phone' => 'required|string|min:8|max:15',
+            'phone' => 'required|string',
             'address' => 'required|string',
         ];
     }

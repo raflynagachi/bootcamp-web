@@ -73,6 +73,8 @@ class CheckoutController extends Controller
         $user->email = $data['email'];
         $user->name = $data['name'];
         $user->occupation = $data['occupation'];
+        $user->phone = $data['phone'];
+        $user->address = $data['address'];
         $user->save();
 
         $checkout = Checkout::create($data);
@@ -142,11 +144,11 @@ class CheckoutController extends Controller
         $checkout->midtrans_booking_code = $orderId;
 
         $transaction_details = [
-            'order_id' => $checkout->id,
+            'order_id' => $orderId,
             'gross_amount' => $price,
         ];
 
-        $item_details = [
+        $item_details[] = [
             'id' => $orderId,
             'price' => $price,
             'quantity' => 1,
@@ -190,7 +192,7 @@ class CheckoutController extends Controller
 
     public function midtransCallback(Request $request)
     {
-        $notif = new Midtrans\Notification();
+        $notif = new \Midtrans\Notification();
 
         $transaction_status = $notif->transaction_status;
         $fraud = $notif->fraud_status;
