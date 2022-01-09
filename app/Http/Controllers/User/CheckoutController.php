@@ -16,13 +16,13 @@ use Illuminate\Support\Str;
 use Midtrans;
 class CheckoutController extends Controller
 {
-    public function _construct()
+    public function __construct()
     {
-        Midtrans\Config::$serverKey = $_ENV('MIDTRANS_SERVERKEY');
-        Midtrans\Config::$clientKey = $_ENV('MIDTRANS_CLIENTKEY');
-        Midtrans\Config::$isProduction = $_ENV('MIDTRANS_IS_PRODUCTION');
-        Midtrans\Config::$isSanitized = $_ENV('MIDTRANS_IS_SANITIZED');
-        Midtrans\Config::$is3ds = $_ENV('MIDTRANS_IS_3DS');
+        Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
+        Midtrans\Config::$clientKey = env('MIDTRANS_CLIENTKEY');
+        Midtrans\Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
+        Midtrans\Config::$isSanitized = env('MIDTRANS_IS_SANITIZED');
+        Midtrans\Config::$is3ds = env('MIDTRANS_IS_3DS');
     }
 
     /**
@@ -181,13 +181,15 @@ class CheckoutController extends Controller
         ];
 
         try {
-            $paymentUrl = \Midtrans\Snap::createTransaction($midtrans_params)->redirect_url;
+            $paymentUrl = Midtrans\Snap::createTransaction($midtrans_params)->redirect_url;
             $checkout->midtrans_url = $paymentUrl;
             $checkout->save();
-            return $paymentUrl;
+            return $paymentUrl;            
         } catch (Exception $e) {
-            return false;
+            return $e;
         }
+
+        
     }
 
     public function midtransCallback(Request $request)

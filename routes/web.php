@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
-use App\Models\Checkout;
 
 /*
 |--------------------------------------------------------------------------
