@@ -31,7 +31,7 @@
                             </p>
                         </td>
                         <td>
-                            <strong>${{$item->camp->price}},00</strong>
+                            <strong>Rp{{$item->camp->price}}.000,00</strong>
                         </td>
                         <td>
                             @if ($item->payment_status == 'paid' || $item->payment_status == 'settlement')
