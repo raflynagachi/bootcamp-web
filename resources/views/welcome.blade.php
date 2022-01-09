@@ -196,7 +196,7 @@
                                 Belajar Python Extra
                             </p>
                             <h1 class="price text-center">
-                                $280K
+                                Rp280K
                             </h1>
                             <div class="item-benefit-pricing mb-4">
                                 <img src="{{asset("images/ic_check.svg")}}" alt="">
@@ -274,7 +274,7 @@
                                 Belajar Python
                             </p>
                             <h1 class="price text-center">
-                                $140K
+                                Rp140K
                             </h1>
                             <div class="item-benefit-pricing mb-4">
                                 <img src="{{asset("images/ic_check.svg")}}" alt="">
