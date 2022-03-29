@@ -31,7 +31,12 @@
                             </p>
                         </td>
                         <td>
-                            <strong>Rp{{$item->camp->price}}.000,00</strong>
+                            <strong>
+                                Rp. {{$item->total}},00
+                                @if ($item->discount_id)
+                                    <span class="badge bg-success"> | Disc {{$item->discount_percentage}}</span>
+                                @endif
+                            </strong>
                         </td>
                         <td>
                             @if ($item->payment_status == 'paid' || $item->payment_status == 'settlement')
