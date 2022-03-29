@@ -15,52 +15,43 @@
                         </div>
                     </div>
                     @include('components.alert')
-                    {{-- <table class="table">
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>User</th>
-                                <th>Camp</th>
-                                <th>Price</th>
-                                <th>Register Data</th>
-                                <th>Paid Status</th>
+                                <th>Name</th>
+                                <th>Code</th>
+                                <th>Description</th>
+                                <th>Percentage</th>
+                                <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($checkouts as $checkout)
+                            @forelse ($discounts as $discount)
                                 <tr>
-                                    <td>{{$checkout->id}}</td>
-                                    <td>{{$checkout->User->name}}</td>
-                                    <td>{{$checkout->Camp->title}}</td>
-                                    <td>${{$checkout->Camp->price}},00</td>
-                                    <td>{{$checkout->created_at->format('M d Y')}}</td>
+                                    <td>{{$discount->name}}</td>
                                     <td>
-                                        @if ($checkout->payment_status == 'paid' || $checkout->payment_status == 'settlement')
-                                            <div class="span badge bg-success">Paid</div>
-                                        @else
-                                            <div class="span badge bg-warning">Waiting</div>
-                                        @endif
+                                        <span class="badge bg-primary">{{$discount->code}}</span>
+                                    </td>
+                                    <td>{{$discount->description}}</td>
+                                    <td>${{$discount->percentage}}%</td>
+                                    <td>
+                                        <a href="{{route('admin.discount.edit', $discount->id)}}" class="btn btn-warning">Edit</a>
                                     </td>
                                     <td>
-                                        @if (!$checkout->payment_status == 'paid' || !$checkout->payment_status == 'settlement')
-                                        <form action="{{route('admin.checkout.update', $checkout->id)}}" method="post">
+                                        <form action="{{route('admin.discount.destroy', $discount->id)}}" method="POST">
                                             @csrf
-                                            <button class="btn btn-primary btn-sm p-2 py-1">
-                                                Set to Paid
-                                            </button>
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">Delete</button>
                                         </form>
-                                        @else
-                                            <button class="btn btn-sm disabled">Already paid</button>
-                                        @endif
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3">No Camps Registered</td>
+                                    <td colspan="6">No Discount Created</td>
                                 </tr>
                             @endforelse
                         </tbody>
-                    </table> --}}
+                    </table>
                 </div>
             </div>
         </div>
