@@ -6,11 +6,16 @@
         <div class="col-10 offset-1">
             <div class="card mt-3">
                 <div class="card-header">
-                    My Camps
+                    Discount
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col md-12 d-flex flex-row-reverse">
+                            <a href="{{route('admin.discount.create')}}" class="btn btn-primary btn-sm">Add discount</a>
+                        </div>
+                    </div>
                     @include('components.alert')
-                    <table class="table">
+                    {{-- <table class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -55,7 +60,7 @@
                                 </tr>
                             @endforelse
                         </tbody>
-                    </table>
+                    </table> --}}
                 </div>
             </div>
         </div>
