@@ -33,7 +33,7 @@
                                         <span class="badge bg-primary">{{$discount->code}}</span>
                                     </td>
                                     <td>{{$discount->description}}</td>
-                                    <td>${{$discount->percentage}}%</td>
+                                    <td>{{$discount->percentage}}%</td>
                                     <td>
                                         <a href="{{route('admin.discount.edit', $discount->id)}}" class="btn btn-warning">Edit</a>
                                     </td>
